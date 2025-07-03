@@ -38,7 +38,7 @@ app.post("/extract-file", upload.single("file"), async (req, res) => {
   }
 });
 
-app.get("*", () => {
+app.get("/", (req, res) => {
   return res.status(200).send("I am a file parser server");
 });
 
