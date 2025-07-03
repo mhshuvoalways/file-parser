@@ -40,4 +40,8 @@ app.post("/extract-file", upload.single("file"), async (req, res) => {
   }
 });
 
+app.get("*", () => {
+  return res.status(200).send("I am a file parser server");
+});
+
 app.listen(5000, () => console.log("Server running on port 5000"));
