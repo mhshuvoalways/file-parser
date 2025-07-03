@@ -2,15 +2,18 @@ const express = require("express");
 const multer = require("multer");
 const pdfParse = require("pdf-parse");
 const cors = require("cors");
+const moragn = require("morgan");
 
 const app = express();
 app.use(cors());
+app.use(moragn("dev"));
 
 const upload = multer({ storage: multer.memoryStorage() });
 
 app.post("/extract-file", upload.single("file"), async (req, res) => {
   try {
     const file = req.file;
+    console.log(file);
 
     if (!file) {
       return res.status(400).send({ error: "No file uploaded" });
