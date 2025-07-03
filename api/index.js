@@ -20,13 +20,11 @@ app.post("/extract-file", upload.single("file"), async (req, res) => {
     const buffer = file.buffer;
 
     if (mimeType === "application/pdf") {
-      // ✅ Extract text from PDF
       const data = await pdfParse(buffer);
       return res.send({ text: data.text });
     }
 
     if (mimeType === "text/plain") {
-      // ✅ Extract text from TXT
       const text = buffer.toString("utf-8");
       return res.send({ text });
     }
